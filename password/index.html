@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url(https://th.bing.com/th/id/R.c872078a85f20b140823421e7339f34e?rik=HOq2A%2bBlpXsP9g&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fsyM6XbO.jpg&ehk=iu3G2cNfI3FkxldGPf%2b446%2bp8wCeVMiECrhfRb188dE%3d&risl=&pid=ImgRaw&r=0);
+
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        #length {
+            border: 3px solid black;
+            border-radius: 5px;
+
+        }
+
+        #generatedPassword {
+            border: 3px solid black;
+            border-radius: 5px;
+        }
+
+        input {
+            font-size: large;
+        }
+
+        button {
+            --color: #560bad;
+            font-family: inherit;
+            display: inline-block;
+            width: 8em;
+            height: 2em;
+            /* line-height: 2.5em; */
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--color);
+            transition: color .5s;
+            z-index: 1;
+            font-size: 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            color: var(--color);
+        }
+
+        button:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            background: var(--color);
+            height: 150px;
+            width: 200px;
+            border-radius: 50%;
+        }
+
+        button:hover {
+            color: #fff;
+        }
+
+        button:before {
+            top: 100%;
+            left: 100%;
+            transition: all .7s;
+        }
+
+        button:hover:before {
+            top: -30px;
+            left: -30px;
+        }
+
+        button:active:before {
+            background: #3a0ca3;
+            transition: background 0s;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="main">
+        <h2>Random Password Generator</h2> <br>
+
+        <label for="length">Password Length:</label><br><br>
+        <input type="number" id="length" min="1"> <br> <br>
+
+        <label><input type="checkbox" id="includeUppercase"> Include Uppercase</label><br><br>
+        <label><input type="checkbox" id="includeLowercase"> Include Lowercase</label><br><br>
+        <label><input type="checkbox" id="includeNumbers"> Include Numbers</label><br><br>
+        <label><input type="checkbox" id="includeSymbols"> Include Symbols</label><br><br>
+        <label><input type="checkbox" id="includeCurrency"> Include Currency</label><br><br>
+
+        <button class="button" onclick="generatePassword()">
+            password
+
+        </button>
+
+        <h3>Generated Password:</h3>
+        <input type="text" id="generatedPassword" readonly>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+<!-- <script>
+    function generatePassword() {
+        const length = document.getElementById('length').value;
+        const includeUppercase = document.getElementById('includeUppercase').checked;
+        const includeLowercase = document.getElementById('includeLowercase').checked;
+        const includeNumbers = document.getElementById('includeNumbers').checked;
+        const includeSymbols = document.getElementById('includeSymbols').checked;
+        const includeCurrency = document.getElementById('includeCurrency').checked;
+
+        let characters = '';
+        let password = '';
+
+        if (includeUppercase) characters += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        if (includeLowercase) characters += 'abcdefghijklmnopqrstuvwxyz';
+        if (includeNumbers) characters += '0123456789';
+        if (includeSymbols) characters += '!@#$%^&*()-_=+';
+        if (includeCurrency) characters += '€£¥₹$₽₩₪₴';
+
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            password += characters[randomIndex];
+        }
+
+        document.getElementById('generatedPassword').value = password;
+    }
+</script> -->
